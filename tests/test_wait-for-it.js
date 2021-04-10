@@ -14,7 +14,7 @@ describe('Test wait-for-it', () => {
         console.log(result.message);
     });
 
-    it('should return return status 127 for invalid port', () => {
+    it('should return return status 127 for invalid port', (done) => {
         const result = isItUp('www.google.com', 88, 5);
         
         expect(result).to.be.an('object');
@@ -23,5 +23,7 @@ describe('Test wait-for-it', () => {
         expect(result).to.have.property('message');
 
         console.log(result.message);
+
+        done();
     })
 });
