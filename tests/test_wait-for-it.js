@@ -11,7 +11,7 @@ describe('Test wait-for-it', () => {
         expect(result).to.have.property('status', 0);
         expect(result).to.have.property('message');
 
-        console.log(result.message);
+        console.log(result);
     });
 
     it('should return return status 127 for invalid port', (done) => {
@@ -22,8 +22,8 @@ describe('Test wait-for-it', () => {
         expect(result.status).to.be.above(0);
         expect(result).to.have.property('message');
 
-        console.log(result.message);
+        console.log(result);
 
         done();
-    })
+    }).timeout(7000);   // set timeout of 7sec
 });
