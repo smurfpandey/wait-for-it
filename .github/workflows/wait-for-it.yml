@@ -30,7 +30,7 @@ jobs:
         uses: ./
         with:
           host: www.google.com
-          port: 80
+          port: 88
           timeout: 5
         continue-on-error: true
 
