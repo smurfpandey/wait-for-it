@@ -8,16 +8,17 @@ const cp = __nccwpck_require__(129);
 const path = __nccwpck_require__(622);
 
 exports.isItUp = (host, port, timeout) => {
-    const command = `./wait-for-it.sh -h ${host} -p ${port} -t ${timeout}`;
+    const command = './wait-for-it.sh';
+    const cmdArgs = ['-h', host, '-p', port, '-t', timeout];
 
     try {
-        const result = cp.execSync(command, {
+        const result = cp.spawnSync(command, cmdArgs, {
             cwd: path.resolve(__dirname),
             encoding: 'utf-8'
-        }).toString();
+        });
         return {
             status: 0,
-            message: result
+            message: result.stderr.toString()
         };
     } catch (error) {
         return {
@@ -505,8 +506,8 @@ try {
 
     const result = isItUp(host, port, timeout);
 
-    if(result.status > 0) {
-        core.setFailed(error.message);
+    if(result.message.indexOf('timeout occurred after waiting') > -1) {
+        core.setFailed(result.message);
     }
 } catch (error) {
   core.setFailed(error.message);

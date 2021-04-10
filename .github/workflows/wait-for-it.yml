@@ -1,0 +1,32 @@
+name: "Wait For It"
+
+on:
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  wait-for-it:
+    name: "Is It Waiting?"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Wait For Google
+        uses: ./
+        with:
+          host: www.google.com
+          port: 80
+          timeout: 5
+
+      - name: Wait For Google - Invalid Port
+        uses: ./
+        with:
+          host: www.google.com
+          port: 88
+          timeout: 5

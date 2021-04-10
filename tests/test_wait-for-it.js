@@ -10,20 +10,18 @@ describe('Test wait-for-it', () => {
         expect(result).to.be.an('object');
         expect(result).to.have.property('status', 0);
         expect(result).to.have.property('message');
+        expect(result.message).to.have.string('www.google.com:80 is available after');
+        
+    }).timeout(7000);
 
-        console.log(result);
-    });
-
-    it('should return return status 127 for invalid port', (done) => {
+    it('should timeout for invalid port', (done) => {
         const result = isItUp('www.google.com', 88, 5);
         
         expect(result).to.be.an('object');
-        expect(result).to.have.property('status');
-        expect(result.status).to.be.above(0);
+        expect(result).to.have.property('status', 0);
         expect(result).to.have.property('message');
-
-        console.log(result);
-
+        expect(result.message).to.have.string('timeout occurred after waiting 5 seconds for www.google.com:88');
+        
         done();
     }).timeout(7000);   // set timeout of 7sec
 });

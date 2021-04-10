@@ -9,8 +9,8 @@ try {
 
     const result = isItUp(host, port, timeout);
 
-    if(result.status > 0) {
-        core.setFailed(error.message);
+    if(result.message.indexOf('timeout occurred after waiting') > -1) {
+        core.setFailed(result.message);
     }
 } catch (error) {
   core.setFailed(error.message);
