@@ -1,4 +1,4 @@
-name: 'Wait For It'
+name: 'TCP - Wait For It'
 description: 'Action that will wait on the availability of a host and TCP port. Wrapper for https://github.com/vishnubob/wait-for-it'
 inputs:
   host:  # id of input
