@@ -8,7 +8,7 @@ inputs:
     required: true
     description: 'TCP port under test'
   timeout:
-    required: true
+    required: false
     description: 'Timeout in seconds, zero for no timeout'
     default: '10'
 runs:
