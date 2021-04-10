@@ -9,12 +9,19 @@ describe('Test wait-for-it', () => {
         
         expect(result).to.be.an('object');
         expect(result).to.have.property('status', 0);
+        expect(result).to.have.property('message');
+
+        console.log(result.message);
     });
 
     it('should return return status 127 for invalid port', () => {
         const result = isItUp('www.google.com', 88, 5);
         
         expect(result).to.be.an('object');
-        expect(result).to.have.property('status', 127);
+        expect(result).to.have.property('status');
+        expect(result.status).to.be.above(0);
+        expect(result).to.have.property('message');
+
+        console.log(result.message);
     })
 });
