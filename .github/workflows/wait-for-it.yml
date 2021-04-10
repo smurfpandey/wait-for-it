@@ -18,6 +18,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Wait For Google
+        id: shouldSucceed
         uses: ./
         with:
           host: www.google.com
@@ -25,8 +26,14 @@ jobs:
           timeout: 5
 
       - name: Wait For Google - Invalid Port
+        id: shouldFail
         uses: ./
         with:
           host: www.google.com
           port: 88
           timeout: 5
+        continue-on-error: true
+
+      - name: Verify failure
+        if: steps.shouldFail.outcome != 'failure'
+        run: exit 1
