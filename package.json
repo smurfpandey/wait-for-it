@@ -1,0 +1,30 @@
+{
+  "name": "wait-for-it-actions",
+  "version": "1.0.0",
+  "description": "Github Action",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --recursive tests --exit",
+    "build": "ncc build index.js --license LICENSE && cp -r ./lib/wait-for-it.sh ./dist/ "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smurfpandey/wait-for-it-actions.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/smurfpandey/wait-for-it-actions/issues"
+  },
+  "homepage": "https://github.com/smurfpandey/wait-for-it-actions#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.6"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.28.2",
+    "chai": "^4.3.4",
+    "mocha": "^8.3.2",
+    "webpack": "^5.31.2"
+  }
+}

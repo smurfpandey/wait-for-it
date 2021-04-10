@@ -1,0 +1,16 @@
+name: 'Wait For It'
+description: 'Action that will wait on the availability of a host and TCP port. Wrapper for https://github.com/vishnubob/wait-for-it'
+inputs:
+  host:  # id of input
+    description: 'Host or IP under test'
+    required: true
+  port:
+    required: true
+    description: 'TCP port under test'
+  timeout:
+    required: true
+    description: 'Timeout in seconds, zero for no timeout'
+    default: '10'
+runs:
+  using: 'node12'
+  main: 'index.js'
