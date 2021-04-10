@@ -14,10 +14,10 @@ exports.isItUp = (host, port, timeout) => {
         const result = cp.execSync(command, {
             cwd: path.resolve(__dirname),
             encoding: 'utf-8'
-        });
+        }).toString();
         return {
             status: 0,
-            message: result.stdout
+            message: result
         };
     } catch (error) {
         return {
